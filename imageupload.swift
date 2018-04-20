@@ -5,8 +5,6 @@
 //  Copyright © 2018 none. All rights reserved.
 //
 
-import Foundation
-
 func upload(image : UIImage, with modelName: String, completionHandler: @escaping ((Bool,String)->Void)){
     
     let url = URL(string: "_____/upload.php")
@@ -25,18 +23,10 @@ func upload(image : UIImage, with modelName: String, completionHandler: @escapin
     }
     
     let body = NSMutableData()
-    
+   
     let fname = "\(modelName).png"
-    
     let contentType = "multipart/form-data; boundary=\(boundary)"
-    
     let mimetype = "image/png"
-    
-    /*
-     body.append("--\(boundary)\r\n".data(using: String.Encoding.utf8)!)
-     body.append("Content-Disposition:form-data; name=\"test\"\r\n\r\n".data(using: String.Encoding.utf8)!)
-     body.append("hi\r\n".data(using: String.Encoding.utf8)!)
-     */
     
     body.append("--\(boundary)\r\n".data(using: String.Encoding.utf8)!)
     body.append("Content-Disposition:form-data; name=\"file\"; filename=\"\(fname)\"\r\n".data(using: String.Encoding.utf8)!)
